@@ -1,6 +1,3 @@
-// SecureKit - a small console security toolkit
-// Features: password strength checker, password generator, Caesar cipher
-// Concepts used: OOP (classes, encapsulation), STL (string, vector), <random>, menu-driven I/O
 
 #include <iostream>
 #include <string>
@@ -11,7 +8,7 @@
 #include <limits>
 using namespace std;
 
-// ---------- 1) Password strength analyzer ----------
+
 class PasswordAnalyzer {
 private:
     vector<string> commonPasswords;
@@ -29,7 +26,6 @@ public:
         return find(commonPasswords.begin(), commonPasswords.end(), lower) != commonPasswords.end();
     }
 
-    // Score from 0 (very bad) to 6 (very good)
     int score(const string &pass) const {
         if (isCommon(pass)) return 0;
         int s = 0;
@@ -64,7 +60,7 @@ public:
     }
 };
 
-// ---------- 2) Random password generator ----------
+
 class PasswordGenerator {
 private:
     mt19937 engine;
@@ -86,7 +82,7 @@ public:
 
         if (length < 4) length = 4;
 
-        // guarantee at least one character of each type
+       
         string result;
         result += pick(lower);
         result += pick(upper);
@@ -98,8 +94,6 @@ public:
         return result;
     }
 };
-
-// ---------- 3) Caesar cipher ----------
 class CaesarCipher {
 public:
     static string shiftText(const string &text, int key) {
@@ -115,7 +109,6 @@ public:
     static string decrypt(const string &text, int key) { return shiftText(text, -key); }
 };
 
-// ---------- helpers ----------
 int readInt(const string &prompt) {
     int x;
     cout << prompt;
